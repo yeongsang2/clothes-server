@@ -8,6 +8,14 @@ services:
       - 8080:8080
     networks:
       - mynetwork
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   app2:
     build:
       context: ./app2
@@ -16,6 +24,14 @@ services:
       - 8081:8081
     networks:
       - mynetwork
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 networks:
   mynetwork:
